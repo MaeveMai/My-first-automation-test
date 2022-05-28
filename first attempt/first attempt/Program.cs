@@ -142,3 +142,26 @@ if (CodeShowed.Text == "TEFA123"
 }
 else
     Console.WriteLine("Edit Failed, test failed");
+
+//identify delete button and click
+IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[5]/a[2]"));
+deleteButton.Click();
+
+//identify confirm button and click
+IAlert ComfirmationMessage = driver.SwitchTo().Alert();
+ComfirmationMessage.Accept();
+
+//identify refresh button andclick
+IWebElement refreshButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[5]"));
+refreshButton.Click();
+Thread.Sleep(2000);
+//check whether delete successfully
+IWebElement CodeShowed2 = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
+
+if (CodeShowed2.Text != "TEFA123")
+
+{
+    Console.WriteLine("Delete successfully, test pass");
+}
+else
+    Console.WriteLine("Delete Failed, test failed");

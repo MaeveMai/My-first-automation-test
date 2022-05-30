@@ -47,6 +47,7 @@ CreateButton.Click();
 //identify TM dropdown box and select Time
 IWebElement TMDropdownBox = driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]/span/span[1]"));
 TMDropdownBox.Click();
+Thread.Sleep(1500);
 
 IWebElement TimeOption = driver.FindElement(By.XPath("//*[@id='TypeCode_listbox']/li[2]"));
 TimeOption.Click();
@@ -152,8 +153,9 @@ IAlert ComfirmationMessage = driver.SwitchTo().Alert();
 ComfirmationMessage.Accept();
 
 //identify refresh button andclick
-IWebElement refreshButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[5]"));
-refreshButton.Click();
+//IWebElement refreshButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[5]"));
+//refreshButton.Click();
+driver.Navigate().Refresh();
 Thread.Sleep(2000);
 //check whether delete successfully
 IWebElement CodeShowed2 = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));

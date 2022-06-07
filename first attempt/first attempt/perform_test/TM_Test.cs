@@ -7,52 +7,41 @@ using OpenQA.Selenium.Chrome;
 //See https://aka.ms/new-console-template for more information
 
 [TestFixture]
+[Parallelizable]
 public class TM_Test : CommonDriver
 {
-    [SetUp]
-    public void loginAction()
-    {
-        //open ChromBrowser
-        //IWebDriver driver = new ChromeDriver();
-        driver = new ChromeDriver();
+    //object initializing 
+    HomePage homePageObject = new HomePage();
+    TMPage TMPageObject = new TMPage();
 
-        //login page object initializing and action
-        LoginPage loginPageObject = new LoginPage();
-        loginPageObject.LoginAction(driver);
 
-        //homepage object initializing and action
-        HomePage homePageObject = new HomePage();
-        homePageObject.goToTMPage(driver);
-    }
-
-    [Test]
+    [Test, Order(1), Description("Create time and material record with valid data")]
     public void CreateTMRecord()
     {
-        //TMpage object initializing and create new TM record
-        TMPage TMPageObject = new TMPage();
+        //Home page object initialization and definition
+        homePageObject.goToTMPage(driver);
+
+        //TM page object initialization and definition
         TMPageObject.CreateTMRecord(driver);
     }
 
-    [Test]
+    [Test, Order(2), Description("Edit time and material record created in test number 1")]
     public void EditTMRecord()
     {
-        //Edit existing TM record
-        TMPage TMPageObject = new TMPage();
+        //Home page object initialization and definition
+        homePageObject.goToTMPage(driver);
+        //TM page object initialization and definition
         TMPageObject.editTMRecord(driver);
     }
 
-    [Test]
+    [Test, Order(3), Description("Delete time and material record edited in test number 2")]
     public void DeleteTMRecord()
     {
-        //Delete existing record
-        TMPage TMPageObject = new TMPage();
+        //Home page object initialization and definition
+        homePageObject.goToTMPage(driver);
+        //TM page object initialization and definition
         TMPageObject.deleteTMRecord(driver);
     }
-    [TearDown]
-    public void CloseTestRun()
-    {
-        driver.Close();
 
-    }
 }
 

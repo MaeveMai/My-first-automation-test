@@ -53,10 +53,27 @@ namespace first_attempt.Pages
         }
 
         public void editTMRecord(IWebDriver driver)
+
         {
-            //Identify edit button and click
-            IWebElement editButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[5]/a[1]"));
-            editButton.Click();
+            driver.Navigate().Refresh();
+            Thread.Sleep(1500);
+            IWebElement LastPageButton1 = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[4]/span"));
+            LastPageButton1.Click();
+            Thread.Sleep(1500);
+
+            IWebElement findNewRecord = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
+
+            if (findNewRecord.Text == "AutoTest321")
+            {
+                // Click on the Edit Button
+                IWebElement editButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[5]/a[1]"));
+                editButton.Click();
+                Thread.Sleep(1000);
+            }
+            else
+            {
+                Assert.Fail("Record to be edited not found.");
+            }
 
             //iddentify typecode dropdownbox and change option
             IWebElement EditTMDropdownBox = driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]/span/span[1]"));
@@ -93,19 +110,27 @@ namespace first_attempt.Pages
             Thread.Sleep(1500);
 
             //check whether edit successfully
+            IWebElement LastPageButton2 = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[4]/span"));
+            LastPageButton2.Click();
+            Thread.Sleep(1500);
 
             IWebElement CodeShowed = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
             IWebElement typeShowed = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[2]"));
             IWebElement DescShowed = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[3]"));
             IWebElement priceShowed = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[4]"));
-            Assert.That(CodeShowed.Text == "TEFA123"
-            && typeShowed.Text == "M"
-            && DescShowed.Text == "C123123"
-            && priceShowed.Text == "$100.00"
-             ,"Edit Failed, test failed");
+            Assert.That(CodeShowed.Text == "TEFA123", "Edit code Failed, test failed");
+            Assert.That(typeShowed.Text == "M", "Edit type Failed, test failed");
+            Assert.That(DescShowed.Text == "C123123", "Edit description Failed, test failed");
+            Assert.That(priceShowed.Text == "$100.00", "Edit price Failed, test failed");
         }
         public void deleteTMRecord(IWebDriver driver)
         {
+            // go to last page
+            Thread.Sleep(1000);
+            IWebElement LastPageButton3 = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[4]/span"));
+            LastPageButton3.Click();
+            Thread.Sleep(2000);
+
             //identify delete button and click
             IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[5]/a[2]"));
             deleteButton.Click();
@@ -119,6 +144,10 @@ namespace first_attempt.Pages
             Thread.Sleep(2000);
 
             //check whether delete successfully
+            IWebElement LastPageButton5 = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[4]/span"));
+            LastPageButton5.Click();
+            Thread.Sleep(2000);
+
             IWebElement CodeShowed2 = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
             Assert.That(CodeShowed2.Text != "TEFA123", "Delete Failed, test failed");
 

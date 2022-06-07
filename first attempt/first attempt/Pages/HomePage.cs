@@ -29,5 +29,9 @@ namespace first_attempt.Pages
             }
 
         }
+        public void GoToEmployeePage(IWebDriver driver)
+        {
+            // navigate to employee page
+        }
     }
 }

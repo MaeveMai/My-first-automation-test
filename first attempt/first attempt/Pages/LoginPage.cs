@@ -13,6 +13,7 @@ namespace first_attempt.Pages
     {
         public void LoginAction(IWebDriver driver)
         {
+            //maximize window
             driver.Manage().Window.Maximize();
 
             //launch turn up portal

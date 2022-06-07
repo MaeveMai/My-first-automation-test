@@ -29,7 +29,7 @@ namespace first_attempt.Utilities
         [OneTimeTearDown]
         public void CloseTestRun()
         {
-            driver.Close();
+            driver.Quit();
 
         }
     }

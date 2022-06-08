@@ -47,9 +47,31 @@ namespace first_attempt.Pages
             IWebElement LastPageButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[4]/span"));
             LastPageButton.Click();
 
-            IWebElement AutoTest321 = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
-            Assert.That(AutoTest321.Text == "AutoTest321", "Create failed, test failed");
-            Thread.Sleep(1000);
+            //IWebElement AutoTest321 = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
+            //Assert.That(AutoTest321.Text == "AutoTest321", "Create failed, test failed");
+            //Thread.Sleep(1000);
+
+        }
+        public string GetNewCode(IWebDriver driver)
+        {
+            IWebElement CodeShowed1 = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
+            return CodeShowed1.Text;
+        }
+
+        public string GetNewTypeCode(IWebDriver driver)
+        {
+            IWebElement typeShowed1 = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[2]"));
+            return typeShowed1.Text;
+        }
+        public string GetNewDescription(IWebDriver driver)
+        {
+            IWebElement DescShowed1 = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[3]"));
+            return DescShowed1.Text;
+        }
+        public string GetNewPrice(IWebDriver driver)
+        {
+            IWebElement priceShowed1 = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[4]"));
+            return priceShowed1.Text;
         }
 
         public void editTMRecord(IWebDriver driver)

@@ -1,4 +1,8 @@
-﻿using System;
+﻿using first_attempt.Pages;
+using first_attempt.Utilities;
+using NUnit.Framework;
+using OpenQA.Selenium.Chrome;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,30 +12,51 @@ using TechTalk.SpecFlow;
 namespace first_attempt.StepDefinotions
 {
     [Binding]
-    public class TMFeatureStepDefinition
+    public class TMFeatureStepDefinition:CommonDriver
     {
         [Given(@"I login to turnup portal successfully")]
         public void GivenILoginToTurnupPortalSuccessfully()
         {
-            throw new PendingStepException();
+            //open ChromBrowser
+            driver = new ChromeDriver();
+
+            //login page object initializing and action
+            LoginPage loginPageObject = new LoginPage();
+            loginPageObject.LoginAction(driver);
         }
 
         [When(@"I navigate to Time&Material page")]
         public void WhenINavigateToTimeMaterialPage()
         {
-            throw new PendingStepException();
+            //Home page object initialization and definition
+            HomePage homePageObject = new HomePage();
+            homePageObject.goToTMPage(driver);
         }
 
         [When(@"I create a new time/material record")]
         public void WhenICreateANewTimeMaterialRecord()
         {
-            throw new PendingStepException();
+            //TM page object initialization and definition
+            TMPage TMPageObject = new TMPage();
+            TMPageObject.CreateTMRecord(driver);
         }
 
         [Then(@"A new T&M record should be create successfully")]
         public void ThenANewTMRecordShouldBeCreateSuccessfully()
         {
-            throw new PendingStepException();
+            //Assertion
+            TMPage TMPageObject = new TMPage();
+            string CodeShowed1 = TMPageObject.GetNewCode(driver);
+            string typeShowed1 = TMPageObject.GetNewTypeCode(driver);
+            string DescShowed1 = TMPageObject.GetNewDescription(driver);
+            string priceShowed1 = TMPageObject.GetNewPrice(driver);
+
+
+            Assert.That(CodeShowed1 == "AutoTest321", "Create code Failed, test failed");
+            Assert.That(typeShowed1 == "T", "Create type Failed, test failed");
+            Assert.That(DescShowed1 == "654352", "Create description Failed, test failed");
+            Assert.That(priceShowed1 == "$20.00", "Create price Failed, test failed");
+            
         }
 
 

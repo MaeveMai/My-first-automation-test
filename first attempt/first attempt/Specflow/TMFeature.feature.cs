@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace first_attempt.Feature
+namespace first_attempt.Specflow
 {
     using TechTalk.SpecFlow;
     using System;
@@ -35,7 +35,7 @@ namespace first_attempt.Feature
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Feature", "TMFeature", "As a TurnUp protal admin\r\nI would like to create, edit and delete time and materi" +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Specflow", "TMFeature", "As a TurnUp protal admin\r\nI would like to create, edit and delete time and materi" +
                     "al records\r\nSo that I can manage employee\' time and materials successfully", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }

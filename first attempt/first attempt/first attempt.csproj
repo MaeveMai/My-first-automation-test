@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Feature\" />
+    <Folder Include="Specflow\" />
   </ItemGroup>
 
 </Project>

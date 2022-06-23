@@ -579,7 +579,7 @@
           </ResultCollector>
           <hashTree/>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
-            <stringProp name="filename">D:/Coding/IC/First selenium Automation test/My-first-automation-test/first attempt/first attempt/LoadTest/LoadTestData.txt</stringProp>
+            <stringProp name="filename">D:/Coding/IC/First selenium Automation test/My-first-automation-test/first attempt/first attempt/LoadTest/LoadTestData.csv</stringProp>
             <stringProp name="fileEncoding"></stringProp>
             <stringProp name="variableNames">employeeId</stringProp>
             <boolProp name="ignoreFirstLine">true</boolProp>
